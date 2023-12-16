@@ -4,6 +4,8 @@ import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
 //void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -11,29 +13,33 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: Scan(),
+      home: const Scan(),
     );
   }
 }
 
 class Scan extends StatelessWidget {
+  const Scan({super.key});
+
   @override
   Widget build(BuildContext context) {
-    return QRScanScreen();
+    return const QRScanScreen();
   }
 }
 
 class QRScanScreen extends StatelessWidget {
+  const QRScanScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Escáner de QR'),
+        title: const Text('Escáner de QR'),
       ),
       body: Center(
         child: ElevatedButton(
           onPressed: () => scanQR(context),
-          child: Text('Escanear código QR'),
+          child: const Text('Escanear código QR'),
         ),
       ),
     );
@@ -63,23 +69,23 @@ class QRScanScreen extends StatelessWidget {
 class QRResultScreen extends StatelessWidget {
   final String scanData;
 
-  QRResultScreen(this.scanData);
+  const QRResultScreen(this.scanData, {super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Resultado del escaneo'),
+        title: const Text('Resultado del escaneo'),
       ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Text('Contenido del código QR:'),
-            SizedBox(height: 10),
+            const Text('Contenido del código QR:'),
+            const SizedBox(height: 10),
             Text(
               scanData,
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+              style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
             ),
           ],
         ),

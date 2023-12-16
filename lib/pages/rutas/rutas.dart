@@ -8,11 +8,11 @@ import 'package:flutter_proyecto_producto/pages/scan_page.dart';
 
 Map<String, WidgetBuilder> getRoutes() {
   return <String, WidgetBuilder>{
-    '/home': (context) => HomePages(),
-    '/lista': (context) => Lista(),
-    '/dashboard': (context) =>Dashboard(),
-    '/scan': (context) =>Scan(),
-    //'/login': (context) =>Login(),
+    '/home': (context) => const HomePage(),
+    '/lista': (context) => const Lista(),
+    '/dashboard': (context) =>const Dashboard(),
+    '/scan': (context) =>const Scan(),
+    //'/login': (context) =>LoginScreen(),
     '/producto': (context) => ProductDetailsPage(
           product: Product(
             image:

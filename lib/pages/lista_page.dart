@@ -21,7 +21,7 @@ class _ListaPageState extends State<Lista> {
             onPressed: () {
               Navigator.pop(context); // Acción para ir hacia atrás
             },
-            icon: Icon(Icons.arrow_back), // Icono para retroceder
+            icon: const Icon(Icons.arrow_back), // Icono para retroceder
           ),
           actions: [
             IconButton(
@@ -29,10 +29,10 @@ class _ListaPageState extends State<Lista> {
     // Al presionar el botón, navegamos a la página para agregar producto
     Navigator.push(
       context,
-      MaterialPageRoute(builder: (context) => AddProductPage()),
+      MaterialPageRoute(builder: (context) => const AddProductPage()),
     );
   },
-  icon: Icon(Icons.add),
+  icon: const Icon(Icons.add),
   
 ),
 
@@ -40,7 +40,7 @@ class _ListaPageState extends State<Lista> {
         ),
         body: Column(
           children: [
-            Row(
+            const Row(
               children: [
                 SearchBar(), // Agregamos la barra de búsqueda
                 SizedBox(width: 16.0),
@@ -50,7 +50,7 @@ class _ListaPageState extends State<Lista> {
             Expanded(
               child: ListView(
                 padding: const EdgeInsets.all(16.0),
-                children: [
+                children: const [
                   NoticiaCard(
                     titulo: 'FNC_Desktop01',
                     contenido: '0001',
@@ -80,11 +80,13 @@ class _ListaPageState extends State<Lista> {
 }
 
 class SearchBar extends StatelessWidget {
+  const SearchBar({super.key});
+
   @override
   Widget build(BuildContext context) {
-    return Expanded(
+    return const Expanded(
       child: Padding(
-        padding: const EdgeInsets.all(16.0),
+        padding: EdgeInsets.all(16.0),
         child: TextField(
           decoration: InputDecoration(
             hintText: 'Buscar equipo...',
@@ -98,6 +100,8 @@ class SearchBar extends StatelessWidget {
 }
 
 class StateDropdown extends StatefulWidget {
+  const StateDropdown({super.key});
+
   @override
   _StateDropdownState createState() => _StateDropdownState();
 }
@@ -121,7 +125,7 @@ class _StateDropdownState extends State<StateDropdown> {
           child: Text(value),
         );
       }).toList(),
-      hint: Text('Estado'),
+      hint: const Text('Estado'),
     );
   }
 }
@@ -131,7 +135,7 @@ class NoticiaCard extends StatelessWidget {
   final String contenido;
   final String? imagenUrl;
 
-  const NoticiaCard({
+  const NoticiaCard({super.key, 
     required this.titulo,
     required this.contenido,
     this.imagenUrl,
@@ -152,10 +156,10 @@ class NoticiaCard extends StatelessWidget {
                 child: Image.network(
                   imagenUrl!,
                   height: 150.0,
-                  fit: BoxFit.cover,
+                  fit: BoxFit.scaleDown,
                 ),
               ),
-            SizedBox(width: 16.0),
+            const SizedBox(width: 16.0),
             Expanded(
               flex: 3,
               child: Column(
@@ -163,17 +167,17 @@ class NoticiaCard extends StatelessWidget {
                 children: [
                   Text(
                     titulo,
-                    style: TextStyle(
+                    style: const TextStyle(
                       fontSize: 20.0,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  SizedBox(height: 8.0),
-                  Divider(color: Colors.grey),
-                  SizedBox(height: 8.0),
+                  const SizedBox(height: 8.0),
+                  const Divider(color: Colors.grey),
+                  const SizedBox(height: 8.0),
                   Text(
                     contenido,
-                    style: TextStyle(fontSize: 16.0),
+                    style: const TextStyle(fontSize: 16.0),
                   ),
                 ],
               ),
