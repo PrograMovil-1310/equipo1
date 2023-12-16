@@ -1,0 +1,89 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
+
+//void main() => runApp(MyApp());
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Escáner de QR',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ),
+      home: Scan(),
+    );
+  }
+}
+
+class Scan extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return QRScanScreen();
+  }
+}
+
+class QRScanScreen extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Escáner de QR'),
+      ),
+      body: Center(
+        child: ElevatedButton(
+          onPressed: () => scanQR(context),
+          child: Text('Escanear código QR'),
+        ),
+      ),
+    );
+  }
+
+  Future<void> scanQR(BuildContext context) async {
+    String result = await FlutterBarcodeScanner.scanBarcode(
+      '#ff6666', // color de fondo
+      'Cancelar', // texto del botón de cancelar
+      false, // flash
+      ScanMode.QR, // tipo de código para escanear
+    );
+
+    //if (!mounted) return; // Evita llamadas setState si el widget ya no está en el árbol
+
+    if (result != '-1') {
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => QRResultScreen(result),
+        ),
+      );
+    }
+  }
+}
+
+class QRResultScreen extends StatelessWidget {
+  final String scanData;
+
+  QRResultScreen(this.scanData);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Resultado del escaneo'),
+      ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Text('Contenido del código QR:'),
+            SizedBox(height: 10),
+            Text(
+              scanData,
+              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}

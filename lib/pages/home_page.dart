@@ -15,22 +15,48 @@ class HomePages extends StatelessWidget {
         child: ListView(
           children: <Widget>[
             DrawerItem(
-              icon: Icons.public,
+              icon: Icons.bar_chart,
               text: 'Dashboard',
               onTap: () => Navigator.pushNamed(context, '/dashboard'),
             ),
             DrawerItem(
-              icon: Icons.monetization_on,
+              icon: Icons.list,
               text: 'Lista',
               onTap: () => Navigator.pushNamed(context, '/lista'),
             ),
             DrawerItem(
-              icon: Icons.monetization_on,
+              icon: Icons.web_asset,
               text: 'Producto',
               onTap: () => Navigator.pushNamed(context, '/producto'),
+              
             ),
+            DrawerItem(
+              icon: Icons.web_asset,
+              text: 'Login',
+              onTap: () => Navigator.pushNamed(context, '/login'),
+            )
           ],
         ),
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        selectedItemColor: Colors.blue,
+        unselectedItemColor: Colors.grey,
+        showSelectedLabels: false,
+        showUnselectedLabels: false,
+        items: [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: 'Inicio',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.qr_code),
+            label: 'Scan',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.settings),
+            label: 'Actions',
+          ),
+        ],
       ),
     );
   }
@@ -58,7 +84,7 @@ class MainDrawer extends StatelessWidget {
             ),
           ),
           DrawerItem(
-            icon: Icons.home,
+            icon: Icons.bar_chart,
             text: 'Dashboard',
             onTap: () => Navigator.pushNamed(context, '/dashboard'),
           ),
