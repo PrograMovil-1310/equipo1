@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_proyecto_producto/pages/scan_page.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -57,6 +58,12 @@ class HomePage extends StatelessWidget {
             label: 'Actions',
           ),
         ],
+        onTap: (int index) {
+    if (index == 1) {
+      // Navega a la página de escaneo cuando se presiona "Scan"
+      Navigator.push(context, MaterialPageRoute(builder: (context) => QRScanScreen()));
+    }
+  },
       ),
     );
   }
